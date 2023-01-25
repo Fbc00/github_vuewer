@@ -51,8 +51,8 @@ export default {
 		async fetchChildren(item){
 			if (item.type === 'file') return
 			const data = await api.fetch_children(item.url)
-			helpersChildren.addChildren(data)
-			return item.children.push(...data)
+			const sort = helpersChildren.organizeItems(helpersChildren.addChildren(data))
+			return item.children.push(...sort)
 		},
 		mandaAbrir(item) {
 			if (item.type === 'file') {
