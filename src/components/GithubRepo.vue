@@ -65,7 +65,7 @@
         }
       },
       repo () {
-        this.$emit('reposelected', this.repo)
+        this.$emit('reposelected', {user: this.user, repo: this.repo})
       }
     }
   }

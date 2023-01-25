@@ -34,7 +34,9 @@
     import {api} from '~api'
   
     export default {
-      props: ['repo'],
+      props: {
+        repo: Object
+      },
       data: () => ({
         issues: [],
         loading: false,
@@ -44,7 +46,7 @@
       methods: {
         async listaIssues(){
           this.loading = true
-          const maisissues = await api.listaIssues(this.repo.owner.login, this.repo.name, this.currentPage)
+          const maisissues = await api.listaIssues(this.repo.user, this.repo.name, this.currentPage)
           this.issues = this.issues.concat(maisissues)
           this.currentPage++
           this.loading = false
