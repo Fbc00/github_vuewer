@@ -41,8 +41,7 @@ export default {
 	methods: {
 		async listCOntents() {
 			const data = await api.lista_contents(this.dados.user, this.dados.repo.name)
-			this.items = helpersChildren.addChildren([...data])
-			this.items = helpersChildren.organizeItems(this.items)
+			this.items = helpersChildren.organizeItems(helpersChildren.addChildren([...data]))
 		},
 		async fetchChildren(item){
 			if (item.type === 'file') return
