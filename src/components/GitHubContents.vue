@@ -5,10 +5,13 @@
 	open-on-click
     :items="items"
 	:load-children="fetchChildren"
+	item-text="''"
+
+	
   >
   
-	<template v-slot:prepend="{ item }">
-		<a :href="item.html_url" target="_blank" style="text-decoration:none;">
+	<template v-slot:prepend="{ item }"  >
+		<a :href="item.type === 'dir' ? item.html : item.download_url" target="_blank" style="text-decoration:none;" >
 			<v-icon v-if="item.type === 'dir'" color="blue">
 				mdi-folder
 			</v-icon>
@@ -16,6 +19,8 @@
 				mdi-file
 			</v-icon>
 		</a>
+		<span @click="mandaAbrir(item)" >{{ item.name }}</span>
+	
 	</template>
   </v-treeview>
   </v-container>
@@ -48,6 +53,11 @@ export default {
 			const data = await api.fetch_children(item.url)
 			helpersChildren.addChildren(data)
 			return item.children.push(...data)
+		},
+		mandaAbrir(item) {
+			if (item.type === 'file') {
+				this.$emit('showpopup', item.download_url)
+			}
 		}
 	},
 	
