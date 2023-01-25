@@ -16,7 +16,7 @@
       </v-tab-item>
     </v-tabs-items>
     <v-dialog v-model="dialog" class="popup"
-        max-width="700"  > 
+        max-width="1400px"  > 
       <PopupText
       :popupvalue="popupvalue" />
     </v-dialog>

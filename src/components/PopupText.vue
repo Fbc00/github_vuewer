@@ -1,6 +1,6 @@
 <template>
 	<v-card
-		max-width="700"
+		max-width="1400"
 	>
 		<v-card-text>
 			<pre>{{ popupvalue }}</pre>
